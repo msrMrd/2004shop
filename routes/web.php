@@ -90,3 +90,10 @@ Route::prefix('/wx')->group(function(){
 
 });
 
+Route::any('/Token','Test1Controller@index');
+Route::any('/textmenu','Test1Controller@textmenu');   //自定义菜单
+
+Route::any('/getguzzle','Test1Controller@geta');
+Route::any('/postguzzle','Test1Controller@getb');
+
+
