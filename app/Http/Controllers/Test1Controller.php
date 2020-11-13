@@ -321,14 +321,15 @@ class Test1Controller extends Controller
              $data["media_id"]=$obj->MediaId;
 
          }
+         Media::insert($data);
          if(!empty($file_type)){    //如果不是空的这下载
              file_put_contents("dwaw".$file_type,$url);
          }
-         Media::insert($data);
+         $content="添加成功";
      }else{
-            return $res;
+         $content="已存在";
      }
-     return true;
+     return $this->text($obj,$content);
  }
 
 //    ############################图片消息##########################
