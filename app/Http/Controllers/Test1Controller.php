@@ -52,7 +52,6 @@ class Test1Controller extends Controller
             //自定义菜单的天气
             if($obj->EventKey=="V5TQ"){
                 $content="北京";
-                $content=urlencode(str_replace($content));//城市名称是字符串
                 $key="77aee97ce2cadb280fab57b84a151966";
                 $url="http://apis.juhe.cn/simpleWeather/query?city=".$content."&key=".$key;
                 $result=file_get_contents($url);
