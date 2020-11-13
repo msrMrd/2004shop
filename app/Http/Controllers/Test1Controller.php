@@ -327,9 +327,7 @@ class Test1Controller extends Controller
          Media::insert($data);
 
      }else{
-//        return $res;
-         $content="已存在";
-       echo text($obj,$content);
+
      }
 
      return true;
