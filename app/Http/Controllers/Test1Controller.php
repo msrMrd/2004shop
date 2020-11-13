@@ -326,11 +326,10 @@ class Test1Controller extends Controller
          }
          Media::insert($data);
          $content="添加成功";
-      return  text($obj,$content);
      }else{
             return $res;
      }
-
+     return  text($obj,$content);
      return true;
  }
 
