@@ -325,7 +325,8 @@ class Test1Controller extends Controller
              file_put_contents("dwaw".$file_type,$url);
          }
          Media::insert($data);
-
+         $content="添加成功";
+      echo text($obj,$content);
      }else{
             return $res;
      }
