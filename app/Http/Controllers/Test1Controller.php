@@ -349,6 +349,37 @@ class Test1Controller extends Controller
      return $this->text($obj,$content);
  }
 
+
+    public function wxWebAuth(){
+        $redirect='http://2004wx.liyazhou.top/'.'/web_redirect';
+
+        $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=".env('MIX_APPID')."&redirect_uri=".$redirect."&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
+        dd($url);
+        return redirect($url);
+    }
+    //微信授权页面重定向
+    public function WebRedirect(){
+        $code=$_GET['code'];
+        $url="https://api.weixin.qq.com/sns/oauth2/access_token?appid=".env('MIX_APPID')."&secret=".env('MIX_SECRET')."&code=".$code."&grant_type=authorization_code";
+
+        $xml=file_get_contents($url);
+        $xml_code=json_decode($xml,true);
+        if(isset($xml_code['errcode'])){
+            if($xml_code['errcode']==40163){
+                return"验证码已经失效";
+            }
+        }
+        $access_token=$xml_code['access_token'];
+        $openid=$xml_code['openid'];
+        //拉取用户的信息
+        $api="https://api.weixin.qq.com/sns/userinfo?access_token=".$access_token."&openid=".$openid."&lang=zh_CN";
+        $user=file_get_contents($api);
+        $user_info=json_decode($user,true);
+//        dd($user_info);
+        if($user_info){
+            return redirect('/');
+        }
+    }
 //    ############################图片消息##########################
 //    function imgContent($obj,$content){
 //        $ToUserName=$obj->FromUserName;
