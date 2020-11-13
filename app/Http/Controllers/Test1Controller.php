@@ -326,7 +326,7 @@ class Test1Controller extends Controller
          }
          Media::insert($data);
          $content="添加成功";
-      echo text($obj,$content);
+      return  text($obj,$content);
      }else{
             return $res;
      }
