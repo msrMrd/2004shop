@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 use Log;
 use GuzzleHttp\Client;
-class TestController extends Controller
+class Test1Controller extends Controller
 {
     public function index(){
         $res=request()->get('echostr','');
