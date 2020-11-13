@@ -327,7 +327,7 @@ class Test1Controller extends Controller
          Media::insert($data);
 
      }else{
-
+            return $res;
      }
 
      return true;
