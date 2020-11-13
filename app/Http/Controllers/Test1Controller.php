@@ -232,9 +232,9 @@ class Test1Controller extends Controller
                          "key"=> "V1001_TODAY_MUSIC"
                     ],
                     [
-                        "type"=>"view",
-                        "name"=>"京东",
-                        "url"=>"http://www.jd.com/"
+                        "type"=>"click",
+                        "name"=>"天气",
+                        "key"=>"V5TQ"
                     ]
                     ]
                     ],
@@ -324,11 +324,12 @@ class Test1Controller extends Controller
          if(!empty($file_type)){    //如果不是空的这下载
              file_put_contents("dwaw".$file_type,$url);
          }
-         Media::create($data);
-
+         Media::insert($data);
 
      }else{
-        return $res;
+//        return $res;
+         $content="已存在";
+       echo text($obj,$content);
      }
 
      return true;
