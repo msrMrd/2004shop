@@ -237,7 +237,7 @@ class Test1Controller extends Controller
                             [
                             "type"=>"view",
                             "name"=>"项目",
-                            "url"=>"http://www.jd.com/"
+                            "url"=>"http://2004wx.liyazhou.top/'.'/wx_webAuth"
                                 ]
                             ]
                     ],
