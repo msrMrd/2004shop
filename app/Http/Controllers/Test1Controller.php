@@ -49,6 +49,23 @@ class Test1Controller extends Controller
                 }
 
             }
+            //自定义菜单的天气
+            if($obj->EventKey=="V5TQ"){
+                $city=urlencode(str_replace("天气:","北京",$obj->Content));//城市名称是字符串
+                $key="77aee97ce2cadb280fab57b84a151966";
+                $url="http://apis.juhe.cn/simpleWeather/query?city=".$city."&key=".$key;
+                $result=file_get_contents($url);
+                $result=json_decode($result,true);
+                $today=$result["result"]['realtime'];   //获取本天的天气
+                $content="查询天气的城市：".$result["result"]["city"]."\n";
+                $content.="天气详细情况：".$today["info"];
+                $content.="温度：".$today["temperature"]."\n";
+                $content.="湿度：".$today["humidity"]."\n";
+                $content.="风向：".$today["direct"]."\n";
+                $content.="风力：".$today["power"]."\n";
+                $content.="空气质量指数：".$today["aqi"]."\n";
+                echo   $this->text($obj,$content);
+            }
                 switch($obj->MsgType){
                     case "event":
                         //关注
