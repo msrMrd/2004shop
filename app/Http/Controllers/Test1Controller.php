@@ -14,7 +14,7 @@ class Test1Controller extends Controller
     public function index(){
         $res=request()->get('echostr','');
         if($this->checkSignature() && !empty($res)){
-            echo $res; 
+            echo $res;
         }else{
 //
             $xml=file_get_contents("php://input");//获取微信公众平台传过来的信息
