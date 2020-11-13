@@ -163,7 +163,7 @@ class TestController extends Controller
         $timestamp =request()->get ("timestamp");
         $nonce = request()->get('nonce');
 
-        $token = "Token";
+        $token = "Tokes";
         $tmpArr = array($token, $timestamp, $nonce);
         sort($tmpArr, SORT_STRING);
         $tmpStr = implode( $tmpArr );
