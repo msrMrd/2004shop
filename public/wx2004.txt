@@ -101,3 +101,13 @@
 <Recognition><![CDATA[]]></Recognition>
 </xml>
 
+<xml><ToUserName><![CDATA[gh_b3f4529cff32]]></ToUserName>
+<FromUserName><![CDATA[o968LuDxKw6gIqzhkSfmp2eOl3n8]]></FromUserName>
+<CreateTime>1605319634</CreateTime>
+<MsgType><![CDATA[voice]]></MsgType>
+<MediaId><![CDATA[ktTFF5M4goOwCGqvtBICQaKiHvW624q8Sy4UTmFZ85vUA8Tr4BcUN4wjQ-7odFPI]]></MediaId>
+<Format><![CDATA[amr]]></Format>
+<MsgId>6894795327656689664</MsgId>
+<Recognition><![CDATA[]]></Recognition>
+</xml>
+
