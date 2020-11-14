@@ -21,7 +21,7 @@ class Test1Controller extends Controller
                $obj=simplexml_load_string($xml,"SimpleXMLElement",LIBXML_NOCDATA);//将一个xml格式的对象
             file_put_contents("wx2004.txt",$xml,FILE_APPEND);
 
-            if($obj->MsgType=="video" || $obj->MsgType=="image"){   //不是关注 也不是取消关注的
+            if($obj->MsgType=="video" || $obj->MsgType=="image" ||  $obj->MsgType=="voide" ){   //不是关注 也不是取消关注的
                 $this->typeContent($obj);         //先调用这方法 判断是什么类型 ，在添加数据库9
             }
             //签到
@@ -336,12 +336,12 @@ class Test1Controller extends Controller
 //             $file_type = '.txt';
 //             $data["content"]=$obj->Content;
 //         }
-         //音频
-//         if($obj->MsgType=="voice"){
-//             $file_type = '.amr';
-//             $data["media_id"]=$obj->MediaId;
-//
-//         }
+//         音频
+         if($obj->MsgType=="voice"){
+             $file_type = '.amr';
+             $data["media_id"]=$obj->MediaId;
+
+         }
          Media::insert($data);
          if(!empty($file_type)){    //如果不是空的这下载
              file_put_contents("dwaw".$file_type,$url);
