@@ -91,3 +91,13 @@
 <Event><![CDATA[CLICK]]></Event>
 <EventKey><![CDATA[V5TQ]]></EventKey>
 </xml>
+<xml><ToUserName><![CDATA[gh_b3f4529cff32]]></ToUserName>
+<FromUserName><![CDATA[o968LuDxKw6gIqzhkSfmp2eOl3n8]]></FromUserName>
+<CreateTime>1605315763</CreateTime>
+<MsgType><![CDATA[voice]]></MsgType>
+<MediaId><![CDATA[OOKEp9DOzys2JZLoSY3KHlS7ypbMHIQgaUtCPzBLKDA73_ohEmbIdGscySj_Neaf]]></MediaId>
+<Format><![CDATA[amr]]></Format>
+<MsgId>6894778701838286848</MsgId>
+<Recognition><![CDATA[]]></Recognition>
+</xml>
+
