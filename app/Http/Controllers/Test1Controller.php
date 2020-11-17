@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 use Log;
 use GuzzleHttp\Client;
+use DB;
 class Test1Controller extends Controller
 {
     public function index(){
@@ -152,9 +153,9 @@ class Test1Controller extends Controller
                         }
                        echo $this->text($obj,$content);
                         break;
-                    case "voice":
-
-
+                    case "click":
+                    if($obj->EventKey= "V8KK")
+                            DB::table('goods')->where()->first();
                         break;
                 }
 
@@ -247,17 +248,24 @@ class Test1Controller extends Controller
                     ],
              [
                     "name"=>"操作",
-                    "sub_button"=>[[
+                    "sub_button"=>[
+                        [
                         "type"=>"click",
                         "name"=>"签到",
                          "key"=> "V1001_TODAY_MUSIC"
-                    ],
-                    [
+                        ],
+                        [
                         "type"=>"click",
                         "name"=>"天气",
                         "key"=>"V5TQ"
+                        ],
+                        [
+                            "type"=>"click",
+                            "name"=>"今日推荐",
+                            "key"=>"V8KK"
+                        ]
                     ]
-                    ]
+
                     ],
                     [
                     "name"=>"访问量",
@@ -383,6 +391,35 @@ class Test1Controller extends Controller
         if($user_info){
             return redirect('/');
         }
+    }
+
+    //回复文本
+    public function newstext($obj,$array){
+        $ToUserName=$obj->FromUserName;
+        $FromUserName=$obj->ToUserName;
+        $CreateTime=time();
+        $MsgType="news";
+        $ArticleCount="1";
+        $Title=$array['title'];
+        $Description=$array['Description'];
+        $PicUrl=$array['tupian'];
+        $Url=$array['url'];
+        $xml="<xml>
+              <ToUserName><![CDATA[%s]]></ToUserName>
+              <FromUserName><![CDATA[%s]]></FromUserName>
+              <CreateTime>%s</CreateTime>
+              <MsgType><![CDATA[%s]]></MsgType>
+              <ArticleCount>%s</ArticleCount>
+              <Articles>
+                <item>
+                  <Title><![CDATA[%s]]></Title>
+                  <Description><![CDATA[%s]]></Description>
+                  <PicUrl><![CDATA[%s]]></PicUrl>
+                  <Url><![CDATA[%s]]></Url>
+                </item>
+              </Articles>
+        </xml>";
+        echo sprintf($xml,$ToUserName,$FromUserName,$CreateTime,$MsgType,$ArticleCount,$Title,$Description,$PicUrl,$Url);
     }
 //    ############################图片消息##########################
 //    function imgContent($obj,$content){

@@ -26,7 +26,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Laravel-admin mini logo
+    | Laravel-admin Mini logo
     |--------------------------------------------------------------------------
     |
     | The logo of all admin pages when the sidebar menu is collapsed. You can
@@ -34,7 +34,7 @@ return [
     | '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo-mini' => '<b>La</b>',
+    'logo-Mini' => '<b>La</b>',
 
     /*
     |--------------------------------------------------------------------------
@@ -287,10 +287,10 @@ return [
     | @see https://adminlte.io/docs/2.4/layout
     |
     | Supported: "fixed", "layout-boxed", "layout-top-nav", "sidebar-collapse",
-    | "sidebar-mini".
+    | "sidebar-Mini".
     |
     */
-    'layout' => ['sidebar-mini', 'sidebar-collapse'],
+    'layout' => ['sidebar-Mini', 'sidebar-collapse'],
 
     /*
     |--------------------------------------------------------------------------

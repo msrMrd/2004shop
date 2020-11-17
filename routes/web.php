@@ -99,3 +99,8 @@ Route::any('/postguzzle','Test1Controller@getb');
 
 Route::any('/wx_webAuth','Test1Controller@wxWebAuth');
 Route::any('/web_redirect','Test1Controller@WebRedirect');
+
+##############小程序##################
+Route::any('/weba','AcaCOntroller@text');
+Route::any('/wx_dl','AcaCOntroller@index');
+
