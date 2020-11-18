@@ -104,8 +104,8 @@ Route::any('/web_redirect','Test1Controller@WebRedirect');
 Route::any('/weba','AcaCOntroller@text');
 Route::any('/wx_dl','AcaCOntroller@index');
 Route::any('/viewa','AcaCOntroller@viewa');
-
-
+Route::any('/category','AcaCOntroller@category');
+Route::any('/details','AcaCOntroller@details');
 
 
 

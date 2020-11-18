@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Cate;
 use App\Model\GoodsModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
@@ -17,13 +18,37 @@ class AcaCOntroller extends Controller
        echo json_encode($data);   //让后返回json格式
 
     }
-
+    //小程序 首页商品
     public function viewa(){
         $goods=GoodsModel::inRandOmOrder()->take('10')->get()->toArray();
 //        return json_encode($goods,256);
         return $goods;
     }
+    //小程序 导航栏
+    public function category(){
+        if(!Redis::get("daohanglan")){
+            $cate=Cate::where("parent_id",0)->get()->toArray();
+            $data=[
+                "error"=>0,
+                "msg"=>'成功',
+                "data"=>$cate
+            ];
+            Redis::setex("daohanglan",3600,serialize($data));
+            return $data;
+        }else{
+            return unserialize(Redis::get("daohanglan"));
+        }
 
+    }
+
+    //小程序 详情页面
+    public function details(){
+        $goods_id=request()->get('goods_id');
+//        dd($goods_id);
+        $detail=GoodsModel::where('goods_id',$goods_id)->first()->toArray();
+//        dd($detail);
+        return $detail;
+    }
     public function index(){
 //        echo '<pre>';print_r($_GET);echo '</pre>';
 //        echo '<pre>';print_r($_POST);echo '</pre>';
