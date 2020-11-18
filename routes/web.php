@@ -103,4 +103,9 @@ Route::any('/web_redirect','Test1Controller@WebRedirect');
 ##############小程序##################
 Route::any('/weba','AcaCOntroller@text');
 Route::any('/wx_dl','AcaCOntroller@index');
+Route::any('/viewa','AcaCOntroller@viewa');
+
+
+
+
 
