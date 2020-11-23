@@ -106,6 +106,11 @@ Route::any('/wx_dl','AcaCOntroller@index');
 Route::any('/viewa','AcaCOntroller@viewa');
 Route::any('/category','AcaCOntroller@category');
 Route::any('/details','AcaCOntroller@details');
+Route::any('/xcxcart','AcaCOntroller@cart');
+Route::any('/openid','AcaCOntroller@openid');
+
+
+
 
 
 
