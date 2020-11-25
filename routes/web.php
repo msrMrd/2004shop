@@ -108,6 +108,9 @@ Route::any('/category','AcaCOntroller@category');
 Route::any('/details','AcaCOntroller@details');
 Route::any('/xcxcart','AcaCOntroller@cart');
 Route::any('/openid','AcaCOntroller@openid');
+Route::any('/cate_id','AcaCOntroller@cate_id');
+
+
 
 
 

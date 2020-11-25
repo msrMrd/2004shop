@@ -55,14 +55,20 @@ class AcaCOntroller extends Controller
     public function details(){
         $goods_id=request()->get('goods_id');
 //        dd($goods_id);
-        $detail=GoodsModel::select("goods_name","goods_img","goods_imgs","goods_num","goods_price")->where('goods_id',$goods_id)->first()->toArray();
+        $detail=GoodsModel::select("goods_name","goods_img","goods_imgs","goods_num","goods_price","goods_desc")->where('goods_id',$goods_id)->first()->toArray();
 //        dd($detail);
         $detail=[
             "goods_name"=>$detail['goods_name'],
-            "goods_imgs"=>explode("|",$detail['goods_imgs']),
+            "goods_imgs"=>explode(",",$detail['goods_imgs']),
             "goods_img"=>$detail['goods_img'],
             "goods_num"=>$detail['goods_num'],
             "goods_price"=>$detail['goods_price'],
+        ];
+        $detail=[
+            "errcode"=>0,
+            "errMsg"=>"获取成功",
+            "data"=>$detail
+//            "goods_imgs"=>explode(',',$detail)
         ];
         return $detail;
     }
@@ -116,6 +122,42 @@ class AcaCOntroller extends Controller
 
     //购物车
 
+    //导航栏数据
+    public function cate_id(){
+    $cate_id=request()->get("cate_id",1);
+
+    if($cate_id != 0){
+        $cate_id2=DB::table("shop_cate")->select('cate_id')->where('parent_id',$cate_id)->get();
+//        dd($cate_id2);
+        $arr=[];
+        foreach($cate_id2 as $k=>$v){
+            foreach($v as $l=>$a){
+                $arr[]= $a;
+            }
+        }
+//        dd($arr);
+        $cate_id3=DB::table("shop_cate")->select('cate_id')->whereIn('parent_id',$arr)->get();
+//        dd($cate_id3);
+        $arr=[];
+        foreach($cate_id3 as $k=>$v){
+            foreach($v as $l=>$a){
+                $arr[]= $a;
+            }
+        }
+
+//        dd($arr);
+        $goods=DB::table('goods')->select('goods_id','goods_name','goods_price','goods_img')->whereIn('cate_id',$arr)->paginate(10);
+//        dd(/$goods);
+
+
+    }else{
+        $goods=DB::table("goods")->select('goods_id','goods_name','goods_price','goods_img')->paginate(10);
+
+    }
+//        print_r($arr);die;
+//        dd($goods);
+    return $goods;
+    }
     public function cart(){
         $goods_id=request()->get('goods_id');
 //        print_r($cart_id);
