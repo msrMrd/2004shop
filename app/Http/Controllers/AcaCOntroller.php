@@ -55,9 +55,10 @@ class AcaCOntroller extends Controller
     public function details(){
         $goods_id=request()->get('goods_id');
 //        dd($goods_id);
-        $detail=GoodsModel::select("goods_name","goods_img","goods_imgs","goods_num","goods_price","goods_desc")->where('goods_id',$goods_id)->first()->toArray();
+        $detail=GoodsModel::select("goods_id","goods_name","goods_img","goods_imgs","goods_num","goods_price","goods_desc")->where('goods_id',$goods_id)->first()->toArray();
 //        dd($detail);
         $detail=[
+            "goods_id"=>$detail['goods_id'],
             "goods_name"=>$detail['goods_name'],
             "goods_imgs"=>explode(",",$detail['goods_imgs']),
             "goods_img"=>$detail['goods_img'],
